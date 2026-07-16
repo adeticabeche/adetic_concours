@@ -1,78 +1,100 @@
 const questions = [
 
 {
-question:"Quel est le rôle principal de l'ADETIC ?",
-options:[
-"Construire des routes",
-"Développer les Technologies de l'Information et de la Communication",
-"Gérer les hôpitaux",
-"Former les militaires"
-],
-answer:1
-},
-
-{
 question:"Que signifie le sigle TIC ?",
 options:[
 "Technologies de l'Information et de la Communication",
-"Transmission Internationale des Communications",
-"Technologie Informatique Centrale",
-"Traitement Informatique de Calcul"
+"Transmission Informatique Centrale",
+"Technologie Internationale de Calcul",
+"Traitement Informatique des Communications"
 ],
 answer:0
 },
 
 {
-question:"Que signifie IA ?",
+question:"Quel est le principal objectif de la transformation numérique ?",
 options:[
-"Internet Avancé",
-"Intelligence Artificielle",
-"Information Automatique",
-"Interface Avancée"
+"Améliorer les services grâce aux technologies numériques",
+"Supprimer Internet",
+"Remplacer les ordinateurs",
+"Créer uniquement des sites Web"
 ],
-answer:1
+answer:0
 },
 
 {
-question:"ChatGPT est un exemple de :",
+question:"Lequel des services suivants est un service de stockage en ligne (Cloud) ?",
 options:[
-"Navigateur Web",
-"Logiciel antivirus",
-"Intelligence Artificielle générative",
-"Système d'exploitation"
-],
-answer:2
-},
-
-{
-question:"Quel logiciel est utilisé pour rédiger un document ?",
-options:[
-"Microsoft Word",
+"Google Drive",
 "Paint",
-"VLC",
+"Bloc-notes",
 "Calculatrice"
 ],
 answer:0
 },
 
 {
-question:"Microsoft Excel est principalement utilisé pour :",
+question:"Quelle technologie de téléphonie mobile offre aujourd'hui les débits les plus élevés ?",
 options:[
-"Créer des feuilles de calcul",
-"Naviguer sur Internet",
-"Éditer des vidéos",
-"Créer des jeux"
+"3G",
+"4G",
+"5G",
+"2G"
+],
+answer:2
+},
+
+{
+question:"Quel organisme des Nations Unies est chargé des technologies de l'information et de la communication ?",
+options:[
+"UIT (Union Internationale des Télécommunications)",
+"UNICEF",
+"FAO",
+"PAM"
 ],
 answer:0
 },
 
 {
-question:"Quel logiciel sert à réaliser des présentations ?",
+question:"Windows est :",
 options:[
+"Un système d'exploitation",
+"Un navigateur Internet",
+"Un antivirus",
+"Un moteur de recherche"
+],
+answer:0
+},
+
+{
+question:"Quel logiciel est utilisé pour rédiger des documents ?",
+options:[
+"Microsoft Word",
+"Microsoft Excel",
 "PowerPoint",
-"Access",
-"Notepad",
-"WordPad"
+"Paint"
+],
+answer:0
+},
+
+{
+question:"Quel raccourci clavier permet de copier un texte ?",
+options:[
+"Ctrl + C",
+"Ctrl + V",
+"Ctrl + X",
+"Ctrl + P"
+],
+answer:0
+},
+
+{
+question:"Que signifie le sigle PC ?",
+options:[
+"Personal Computer",
+"Private Computer",
+"Professional Connection",
+"Program Control"
 ],
 answer:0
 },
@@ -80,144 +102,122 @@ answer:0
 {
 question:"Internet est :",
 options:[
-"Un logiciel",
 "Un réseau mondial d'ordinateurs",
+"Un logiciel",
 "Un antivirus",
 "Un disque dur"
+],
+answer:0
+},
+
+{
+question:"Que signifie IA ?",
+options:[
+"Information Assistée",
+"Intelligence Artificielle",
+"Internet Avancé",
+"Interface Automatique"
 ],
 answer:1
 },
 
 {
-question:"Le navigateur Google Chrome permet de :",
+question:"ChatGPT est :",
 options:[
-"Créer un tableau Excel",
-"Accéder aux sites Web",
-"Scanner un document",
-"Installer Windows"
+"Une intelligence artificielle conversationnelle",
+"Un antivirus",
+"Un navigateur Web",
+"Un système d'exploitation"
 ],
-answer:1
+answer:0
+},
+
+{
+question:"Quel est le principal objectif de l'Intelligence Artificielle ?",
+options:[
+"Permettre aux machines d'exécuter des tâches nécessitant l'intelligence humaine",
+"Créer des virus",
+"Remplacer Internet",
+"Augmenter la mémoire des ordinateurs"
+],
+answer:0
+},
+
+{
+question:"Lequel de ces outils utilise l'Intelligence Artificielle ?",
+options:[
+"ChatGPT",
+"Bloc-notes",
+"Paint",
+"Calculatrice Windows"
+],
+answer:0
+},
+
+{
+question:"Quel domaine est fortement transformé par l'Intelligence Artificielle ?",
+options:[
+"La santé",
+"L'éducation",
+"L'agriculture",
+"Tous les domaines précédents"
+],
+answer:3
+},
+
+{
+question:"Quel est le rôle principal d'un antivirus ?",
+options:[
+"Protéger l'ordinateur contre les logiciels malveillants",
+"Créer des documents",
+"Installer Windows",
+"Accélérer Internet"
+],
+answer:0
 },
 
 {
 question:"Un mot de passe sécurisé doit être :",
 options:[
-"Court",
-"Facile à deviner",
-"Long et complexe",
-"Identique partout"
-],
-answer:2
-},
-
-{
-question:"Quel est le rôle d'un antivirus ?",
-options:[
-"Supprimer les virus informatiques",
-"Accélérer Internet",
-"Créer des documents",
-"Faire des sauvegardes"
+"Long, complexe et unique",
+"Votre prénom",
+"123456",
+"Votre numéro de téléphone"
 ],
 answer:0
 },
 
 {
-question:"Le Cloud permet principalement :",
+question:"Qu'appelle-t-on le phishing ?",
 options:[
-"De stocker des données en ligne",
-"De réparer un ordinateur",
-"De créer un virus",
-"De remplacer Windows"
+"Une tentative de voler des informations personnelles par fraude",
+"Une mise à jour de Windows",
+"Un antivirus",
+"Un moteur de recherche"
 ],
 answer:0
 },
 
 {
-question:"Quelle est l'extension d'un document Word ?",
+question:"Avant de cliquer sur un lien reçu par e-mail, il est conseillé de :",
 options:[
-".docx",
-".mp3",
-".jpg",
-".html"
+"Vérifier l'expéditeur et le lien",
+"Cliquer immédiatement",
+"Le partager avec ses amis",
+"Le supprimer automatiquement"
 ],
 answer:0
 },
 
 {
-question:"Que signifie HTML ?",
+question:"Quelle est la meilleure pratique pour protéger ses données personnelles ?",
 options:[
-"HyperText Markup Language",
-"High Technology Machine Language",
-"Hyper Transfer Mail Link",
-"Home Tool Markup Language"
+"Effectuer des sauvegardes régulières et utiliser l'authentification à deux facteurs",
+"Partager son mot de passe",
+"Désactiver l'antivirus",
+"Utiliser le même mot de passe partout"
 ],
 answer:0
-},
-
-{
-question:"Quel composant est considéré comme le cerveau de l'ordinateur ?",
-options:[
-"Le processeur",
-"La souris",
-"L'écran",
-"L'imprimante"
-],
-answer:0
-},
-
-{
-question:"Quel périphérique permet de numériser un document ?",
-options:[
-"Scanner",
-"Clavier",
-"Haut-parleur",
-"Webcam"
-],
-answer:0
-},
-
-{
-question:"La cybersécurité consiste à :",
-options:[
-"Protéger les systèmes informatiques",
-"Créer des virus",
-"Installer Windows",
-"Réparer les imprimantes"
-],
-answer:0
-},
-
-{
-question:"Lequel est un moteur de recherche ?",
-options:[
-"Google",
-"Windows",
-"Excel",
-"PowerPoint"
-],
-answer:0
-},
-
-{
-question:"Une adresse e-mail doit contenir :",
-options:[
-"Le symbole @",
-"Le symbole #",
-"Le symbole %",
-"Le symbole &"
-],
-answer:0
-},
-
-{
-question:"L'objectif de cette sélection est de choisir les candidats pour :",
-options:[
-"Une compétition sportive",
-"Une formation gratuite en Intelligence Artificielle et Bureautique",
-"Un recrutement militaire",
-"Un concours de chant"
-],
-answer:1
 }
 
 ];
