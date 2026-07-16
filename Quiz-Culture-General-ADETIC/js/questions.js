@@ -25,7 +25,7 @@ answer:1
 {
 question:"Combien vaut 2^10 ?",
 options:[
-512",
+"512",
 "1000",
 "1024",
 "2048"
@@ -58,7 +58,7 @@ answer:0
 {
 question:"Quel est le port par défaut du protocole HTTPS ?",
 options:[
-21",
+"21",
 "22",
 "80",
 "443"
@@ -69,7 +69,7 @@ answer:3
 {
 question:"Combien font 17 × 18 ?",
 options:[
-286",
+"286",
 "306",
 "316",
 "296"
@@ -124,7 +124,7 @@ answer:0
 {
 question:"Quel est le résultat de 25² ?",
 options:[
-525",
+"525",
 "625",
 "650",
 "675"
@@ -190,7 +190,7 @@ answer:0
 {
 question:"Combien font 144 ÷ 12 ?",
 options:[
-11",
+"11",
 "12",
 "13",
 "14"
@@ -201,7 +201,7 @@ answer:1
 {
 question:"Quel est le résultat de 15 × 16 ?",
 options:[
-220",
+"220",
 "230",
 "240",
 "250"
@@ -234,7 +234,7 @@ answer:0
 {
 question:"IPv4 utilise des adresses de :",
 options:[
-16 bits",
+"16 bits",
 "32 bits",
 "64 bits",
 "128 bits"
@@ -245,7 +245,7 @@ answer:1
 {
 question:"IPv6 utilise des adresses de :",
 options:[
-64 bits",
+"64 bits",
 "96 bits",
 "128 bits",
 "256 bits"
@@ -267,7 +267,7 @@ answer:0
 {
 question:"Le système binaire utilise combien de chiffres ?",
 options:[
-2",
+"2",
 "8",
 "10",
 "16"
@@ -278,7 +278,7 @@ answer:0
 {
 question:"Quelle est la valeur décimale du binaire 1111 ?",
 options:[
-13",
+"13",
 "14",
 "15",
 "16"
@@ -311,7 +311,7 @@ answer:0
 {
 question:"Quel est le résultat de 99 × 99 ?",
 options:[
-9801",
+"9801",
 "9900",
 "10000",
 "9702"
@@ -377,7 +377,7 @@ answer:0
 {
 question:"Combien font 37 × 12 ?",
 options:[
-424",
+"424",
 "444",
 "454",
 "464"
@@ -410,7 +410,7 @@ answer:0
 {
 question:"Quel est le résultat de 125 × 8 ?",
 options:[
-900",
+"900",
 "1000",
 "1100",
 "1200"
@@ -432,7 +432,7 @@ answer:0
 {
 question:"Quel est le résultat de 15³ ?",
 options:[
-3275",
+"3275",
 "3375",
 "3475",
 "3575"
@@ -454,7 +454,7 @@ answer:0
 {
 question:"Combien font 48 × 25 ?",
 options:[
-1100",
+"1100",
 "1150",
 "1200",
 "1250"
@@ -465,7 +465,7 @@ answer:2
 {
 question:"Quel est le résultat de 7! (7 factorielle) ?",
 options:[
-720",
+"720",
 "5040",
 "40320",
 "840"
@@ -509,7 +509,7 @@ answer:1
 {
 question:"Quel est le résultat de 256 ÷ 2⁴ ?",
 options:[
-8",
+"8",
 "12",
 "16",
 "32"
@@ -542,7 +542,7 @@ answer:0
 {
 question:"Combien font 999 + 999 ?",
 options:[
-1998",
+"1998",
 "1898",
 "2000",
 "2098"
