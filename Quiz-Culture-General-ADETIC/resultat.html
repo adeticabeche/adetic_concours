@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Résultat</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background:#f2f5fa;
+
+text-align:center;
+
+}
+
+.box{
+
+background:white;
+
+width:700px;
+
+max-width:95%;
+
+margin:40px auto;
+
+padding:40px;
+
+border-radius:15px;
+
+box-shadow:0 0 15px rgba(0,0,0,.2);
+
+}
+
+h1{
+
+color:#0056b3;
+
+}
+
+.score{
+
+font-size:60px;
+
+color:#28a745;
+
+margin:30px;
+
+}
+
+.message{
+
+font-size:22px;
+
+margin-top:20px;
+
+}
+
+button{
+
+padding:15px 40px;
+
+background:#0056b3;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-size:18px;
+
+margin-top:30px;
+
+}
+
+button:hover{
+
+background:#003d80;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Résultat du Concours</h1>
+
+<h2 id="nom"></h2>
+
+<div class="score" id="score"></div>
+
+<h2 id="mention"></h2>
+
+<p class="message" id="message"></p>
+
+<button onclick="terminer()">
+Terminer
+</button>
+
+</div>
+
+<div id="actions"></div>
+
+<script src="js/resultat.js"></script>
+
+</body>
+
+</html>
