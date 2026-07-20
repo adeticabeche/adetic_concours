@@ -1,553 +1,256 @@
 const questions = [
 
-{
-question:"Que signifie le sigle TIC ?",
-options:[
-"Technologies de l'Information et de la Communication",
-"Transmission Informatique Centrale",
-"Technologie Internationale de Calcul",
-"Traitement Informatique des Communications"
-],
-answer:0
-},
+
+/* ================= RGPH-3 (5) ================= */
 
 {
-question:"Quel composant exécute les instructions d'un programme ?",
+question:"Lors du RGPH-3, une femme déclare qu'en novembre 2025 elle avait 19 ans et que son premier enfant avait 2 ans. En juillet 2026, quels sont leurs âges ?",
 options:[
-"La RAM",
-"Le processeur (CPU)",
-"Le disque dur",
-"La carte graphique"
+"La mère : 19 ans ; l'enfant : 2 ans",
+"La mère : 20 ans ; l'enfant : 2 ans",
+"La mère : 20 ans ; l'enfant : 3 ans",
+"La mère : 19 ans ; l'enfant : 3 ans"
 ],
 answer:1
 },
 
 {
-question:"Combien vaut 2^10 ?",
+question:"Lors d'un recensement, une personne est née en 1998. En juillet 2026, quel est son âge approximatif ?",
 options:[
-"512",
-"1000",
-"1024",
-"2048"
+"26 ans",
+"27 ans",
+"28 ans",
+"29 ans"
 ],
 answer:2
 },
 
 {
-question:"Quelle est la représentation binaire du nombre décimal 13 ?",
+question:"Une femme est née le 15 décembre 2005. Quel est son âge au 20 juillet 2026 ?",
 options:[
-"1110",
-"1101",
-"1011",
-"1001"
+"19 ans",
+"20 ans",
+"21 ans",
+"22 ans"
 ],
 answer:1
 },
 
 {
-question:"Quel protocole est utilisé pour naviguer sur le Web ?",
+question:"Un commerçant achète un article à 15 000 F CFA et le revend avec un bénéfice de 20 %. Quel est son prix de vente ?",
 options:[
-"HTTP",
-"FTP",
-"SMTP",
-"SSH"
+"18 000 F CFA",
+"16 500 F CFA",
+"17 000 F CFA",
+"20 000 F CFA"
 ],
 answer:0
 },
 
 {
-question:"Quel est le port par défaut du protocole HTTPS ?",
+question:"Une référence absolue dans Excel s'écrit :",
 options:[
-"21",
-"22",
-"80",
-"443"
+"$A$1",
+"A1",
+"A:A",
+"1A"
+],
+answer:0
+},
+
+
+/* ================= INFORMATIQUE GENERALE (4) ================= */
+
+{
+question:"Soit la fonction f(x) = 2x² + 3x - 5. Quelle est la valeur de f(2) ?",
+options:[
+"5",
+"7",
+"11",
+"9"
 ],
 answer:3
 },
 
 {
-question:"Combien font 17 × 18 ?",
+question:"Quelle est la valeur décimale du nombre binaire 101101 ?",
 options:[
-"286",
-"306",
-"316",
-"296"
+"43",
+"45",
+"46",
+"47",
 ],
 answer:1
 },
 
 {
-question:"Quelle mémoire est volatile ?",
+question:"Un système d'exploitation a pour rôle principal de :",
 options:[
-"ROM",
-"SSD",
-"RAM",
-"Disque dur"
+"Créer uniquement des documents",
+"Remplacer Internet",
+"Gérer les ressources matérielles et logicielles de l'ordinateur",
+"Augmenter physiquement la capacité du disque"
 ],
 answer:2
 },
 
 {
-question:"Le langage HTML sert principalement à :",
+question:"Quel langage est principalement utilisé pour interroger une base de données relationnelle ?",
 options:[
-"Programmer des jeux",
-"Structurer une page Web",
-"Créer une base de données",
-"Administrer Windows"
-],
-answer:1
-},
-
-{
-question:"CSS permet principalement de :",
-options:[
-"Créer un serveur",
-"Styliser une page Web",
-"Programmer une IA",
-"Crypter les données"
-],
-answer:1
-},
-
-{
-question:"JavaScript est exécuté principalement :",
-options:[
-"Dans le navigateur",
-"Dans le BIOS",
-"Dans Excel",
-"Dans Word"
-],
-answer:0
-},
-
-{
-question:"Quel est le résultat de 25² ?",
-options:[
-"525",
-"625",
-"650",
-"675"
-],
-answer:1
-},
-
-{
-question:"En Intelligence Artificielle, un modèle est entraîné grâce à :",
-options:[
-"Des données",
-"Des virus",
-"Des imprimantes",
-"Des câbles"
-],
-answer:0
-},
-
-{
-question:"Le Machine Learning est :",
-options:[
-"Une branche de l'IA",
-"Un antivirus",
-"Un système d'exploitation",
-"Un navigateur"
-],
-answer:0
-},
-
-{
-question:"Quel est le principal rôle d'un pare-feu (Firewall) ?",
-options:[
-"Créer des fichiers",
-"Filtrer le trafic réseau",
-"Nettoyer l'écran",
-"Créer des virus"
-],
-answer:1
-},
-
-{
-question:"Le phishing consiste à :",
-options:[
-"Voler des informations par tromperie",
-"Créer un logiciel",
-"Installer Windows",
-"Nettoyer un disque"
-],
-answer:0
-},
-
-{
-question:"Que signifie VPN ?",
-options:[
-"Virtual Private Network",
-"Visual Program Network",
-"Verified Personal Number",
-"Virtual Processor Node"
-],
-answer:0
-},
-
-{
-question:"Combien font 144 ÷ 12 ?",
-options:[
-"11",
-"12",
-"13",
-"14"
-],
-answer:1
-},
-
-{
-question:"Quel est le résultat de 15 × 16 ?",
-options:[
-"220",
-"230",
-"240",
-"250"
-],
-answer:2
-},
-
-{
-question:"Dans un algorithme, une boucle sert à :",
-options:[
-"Répéter des instructions",
-"Créer un virus",
-"Supprimer Windows",
-"Augmenter la RAM"
-],
-answer:0
-},
-
-{
-question:"Quelle structure permet de prendre une décision ?",
-options:[
-"La condition if",
-"La boucle for",
-"La fonction print",
-"Le commentaire"
-],
-answer:0
-},
-
-{
-question:"IPv4 utilise des adresses de :",
-options:[
-"16 bits",
-"32 bits",
-"64 bits",
-"128 bits"
-],
-answer:1
-},
-
-{
-question:"IPv6 utilise des adresses de :",
-options:[
-"64 bits",
-"96 bits",
-"128 bits",
-"256 bits"
-],
-answer:2
-},
-
-{
-question:"Quel logiciel est un navigateur Web ?",
-options:[
-"Google Chrome",
-"Word",
-"Excel",
-"Photoshop"
-],
-answer:0
-},
-
-{
-question:"Le système binaire utilise combien de chiffres ?",
-options:[
-"2",
-"8",
-"10",
-"16"
-],
-answer:0
-},
-
-{
-question:"Quelle est la valeur décimale du binaire 1111 ?",
-options:[
-"13",
-"14",
-"15",
-"16"
-],
-answer:2
-},
-
-{
-question:"Lequel est un moteur de recherche ?",
-options:[
-"Google",
-"Windows",
-"Linux",
-"Word"
-],
-answer:0
-},
-
-{
-question:"Quel est le rôle principal du DNS ?",
-options:[
-"Traduire un nom de domaine en adresse IP",
-"Envoyer des emails",
-"Créer des images",
-"Compresser des fichiers"
-],
-answer:0
-},
-
-{
-question:"Quel est le résultat de 99 × 99 ?",
-options:[
-"9801",
-"9900",
-"10000",
-"9702"
-],
-answer:0
-},
-
-{
-question:"L'algorithme de tri rapide est appelé :",
-options:[
-"Quick Sort",
-"Bubble Sort",
-"Merge",
-"Linear Sort"
-],
-answer:0
-},
-
-{
-question:"Que signifie GPU ?",
-options:[
-"Graphics Processing Unit",
-"General Processor Unit",
-"Global Program Unit",
-"Graphic Power Utility"
-],
-answer:0
-},
-
-{
-question:"Quel composant stocke définitivement les données ?",
-options:[
-"RAM",
-"ROM",
-"SSD",
-"Cache"
-],
-answer:2
-},
-
-{
-question:"Le protocole SMTP sert à :",
-options:[
-"Envoyer des emails",
-"Naviguer sur Internet",
-"Transférer des fichiers",
-"Faire des appels vidéo"
-],
-answer:0
-},
-
-{
-question:"Le protocole FTP permet de :",
-options:[
-"Transférer des fichiers",
-"Créer un réseau Wi-Fi",
-"Imprimer",
-"Compresser les données"
-],
-answer:0
-},
-
-{
-question:"Combien font 37 × 12 ?",
-options:[
-"424",
-"444",
-"454",
-"464"
-],
-answer:1
-},
-
-{
-question:"Le ransomware est :",
-options:[
-"Un logiciel malveillant qui chiffre les données",
-"Un antivirus",
-"Un navigateur",
-"Une base de données"
-],
-answer:0
-},
-
-{
-question:"Quel est le principal langage des bases de données relationnelles ?",
-options:[
+"HTML",
 "SQL",
 "CSS",
-"Python",
-"HTML"
+"XML"
+],
+answer:1
+},
+
+
+/* ================= RESEAUX (3) ================= */
+
+{
+question:"Combien d'adresses IP utilisables possède un réseau IPv4 avec un masque /27 ?",
+options:[
+"30",
+"32",
+"62",
+"64"
 ],
 answer:0
 },
 
 {
-question:"Quel est le résultat de 125 × 8 ?",
+question:"Quel protocole attribue automatiquement une adresse IP à un ordinateur ?",
 options:[
-"900",
-"1000",
-"1100",
-"1200"
+"DNS",
+"DHCP",
+"HTTP",
+"SMTP"
 ],
 answer:1
 },
 
 {
-question:"Dans l'IA, GPT signifie :",
+question:"Quel est le rôle principal du DNS dans un réseau informatique ?",
 options:[
-"Generative Pre-trained Transformer",
-"General Program Technology",
-"Global Processing Tool",
-"Graphic Program Terminal"
+"Convertir les noms de domaine en adresses IP",
+"Chiffrer les fichiers",
+"Créer des comptes utilisateurs",
+"Bloquer les virus"
+],
+answer:0
+},
+
+
+/* ================= CYBERSECURITE (3) ================= */
+
+{
+question:"Une attaque par force brute consiste à :",
+options:[
+"Essayer automatiquement plusieurs combinaisons pour trouver un mot de passe",
+"Supprimer un disque dur physiquement",
+"Installer un antivirus",
+"Créer une sauvegarde"
 ],
 answer:0
 },
 
 {
-question:"Quel est le résultat de 15³ ?",
+question:"Quelle technique permet de sécuriser les échanges sur Internet grâce au chiffrement ?",
 options:[
-"3275",
-"3375",
-"3475",
-"3575"
-],
-answer:1
-},
-
-{
-question:"Quel langage est le plus utilisé en Intelligence Artificielle ?",
-options:[
-"Python",
-"C",
-"Pascal",
-"COBOL"
+"HTTPS/TLS",
+"FTP simple",
+"HTTP simple",
+"Telnet"
 ],
 answer:0
 },
 
 {
-question:"Combien font 48 × 25 ?",
+question:"Le ransomware est un logiciel malveillant qui :",
 options:[
-"1100",
-"1150",
-"1200",
-"1250"
+"Chiffre les fichiers et demande souvent une rançon",
+"Augmente la vitesse Internet",
+"Répare automatiquement Windows",
+"Crée des sauvegardes"
+],
+answer:0
+},
+
+/* ================= INTELLIGENCE ARTIFICIELLE (3) ================= */
+
+{
+question:"Dans un modèle d'apprentissage supervisé (Supervised Learning), les données d'entraînement contiennent :",
+options:[
+"Des données avec leurs réponses attendues (étiquettes)",
+"Uniquement des données sans information",
+"Uniquement des règles programmées manuellement",
+"Des fichiers exécutables uniquement"
+],
+answer:0
+},
+
+{
+question:"Quel est le rôle principal d'un réseau de neurones artificiels en Intelligence Artificielle ?",
+options:[
+"Apprendre des relations complexes à partir des données",
+"Remplacer la mémoire RAM",
+"Créer automatiquement un système d'exploitation",
+"Augmenter la vitesse du processeur"
+],
+answer:0
+},
+
+{
+question:"GPT est principalement basé sur quelle architecture d'Intelligence Artificielle ?",
+options:[
+"Machine virtuelle",
+"Système expert classique",
+"Transformer",
+"Base de données relationnelle"
 ],
 answer:2
 },
 
+
+/* ================= CALCUL MENTAL AVANCE (2) ================= */
+
 {
-question:"Quel est le résultat de 7! (7 factorielle) ?",
+question:"Sans utiliser de calculatrice, combien vaut 125 × 48 ?",
 options:[
-"720",
-"5040",
-"40320",
-"840"
+"5500",
+"6000",
+"6250",
+"6500"
 ],
 answer:1
 },
 
 {
-question:"Quelle attaque consiste à essayer des milliers de mots de passe automatiquement ?",
+question:"Un ordinateur effectue 2^10 opérations en une seconde. Combien d'opérations peut-il effectuer en 5 secondes ?",
 options:[
-"Brute Force",
-"Spoofing",
-"Sniffing",
-"Hashing"
-],
-answer:0
-},
-
-{
-question:"Le chiffrement AES est utilisé pour :",
-options:[
-"Protéger les données",
-"Créer un site Web",
-"Compresser les vidéos",
-"Accélérer Internet"
-],
-answer:0
-},
-
-{
-question:"Quelle est la complexité moyenne de la recherche binaire ?",
-options:[
-"O(n)",
-"O(log n)",
-"O(n²)",
-"O(1)"
-],
-answer:1
-},
-
-{
-question:"Quel est le résultat de 256 ÷ 2⁴ ?",
-options:[
-"8",
-"12",
-"16",
-"32"
+"1024",
+"2048",
+"5120",
+"10240"
 ],
 answer:2
 },
 
-{
-question:"Quel composant permet aux ordinateurs de communiquer dans un réseau local ?",
-options:[
-"Carte réseau",
-"Carte son",
-"Carte graphique",
-"Alimentation"
-],
-answer:0
-},
+
+/* ================= RGPH-3 (1) ================= */
 
 {
-question:"Lequel est un système d'exploitation libre ?",
+question:"Lors du RGPH-3, une femme déclare qu'en novembre 2025 elle avait 19 ans et que son premier enfant avait 2 ans. En juillet 2026, quels sont leurs âges ?",
 options:[
-"Linux",
-"Windows",
-"macOS",
-"Android Studio"
+"La mère : 19 ans et l'enfant : 2 ans",
+"La mère : 20 ans et l'enfant : 2 ans",
+"La mère : 20 ans et l'enfant : 3 ans",
+"La mère : 21 ans et l'enfant : 3 ans"
 ],
-answer:0
+answer:1
 },
-
-{
-question:"Combien font 999 + 999 ?",
-options:[
-"1998",
-"1898",
-"2000",
-"2098"
-],
-answer:0
-}
 
 ];
+
+
