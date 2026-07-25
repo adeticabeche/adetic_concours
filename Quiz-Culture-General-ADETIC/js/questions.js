@@ -241,14 +241,14 @@ answer:2
 /* ================= RGPH-3 (1) ================= */
 
 {
-question:"Lors du RGPH-3, une femme déclare qu'en novembre 2025 elle avait 19 ans et que son premier enfant avait 2 ans. En juillet 2026, quels sont leurs âges ?",
+question:"Qui est le Formateur Principal & Responsable Informatique de l'ADETIC Abéché ?",
 options:[
-"La mère : 19 ans et l'enfant : 2 ans",
-"La mère : 20 ans et l'enfant : 2 ans",
-"La mère : 20 ans et l'enfant : 3 ans",
-"La mère : 21 ans et l'enfant : 3 ans"
+"OUSMAN ADAM MAHAMAT AHMAT",
+"MAHAMAT SALEH ABDELKERIM",
+"AHMAT IBRAHIM HASSAN",
+"ABAKAR YOUSSOUF MAHAMAT"
 ],
-answer:1
+answer:0
 },
 
 ];
