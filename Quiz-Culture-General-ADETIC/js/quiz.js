@@ -2,6 +2,18 @@
 // QUIZ ADETIC
 // ==============================
 
+// AJOUT : Vérifier si le quiz est déjà terminé
+if (sessionStorage.getItem("quizTermine") === "true") {
+    window.location.href = "resultat.html";
+}
+
+// AJOUT : Empêcher le retour sur le quiz après la fin
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted || sessionStorage.getItem("quizTermine") === "true") {
+        window.location.href = "resultat.html";
+    }
+});
+
 // Mélange les questions
 const quiz = [...questions].sort(() => Math.random() - 0.5);
 
@@ -91,6 +103,9 @@ document.getElementById("suivant").addEventListener("click",function(){
 
     }else{
 
+        // AJOUT
+        sessionStorage.setItem("quizTermine","true");
+
         localStorage.setItem("score",score);
 
         window.location.href="resultat.html";
@@ -100,14 +115,24 @@ document.getElementById("suivant").addEventListener("click",function(){
 });
 
 // =======================
-// CHRONOMETRE 5 MINUTES
+// CHRONOMETRE
 // =======================
 
-let temps = 3 * 60; // 5 minutes
+// AJOUT : durée réelle du quiz
+const duree = 3 * 60;
+
+// AJOUT : mémoriser l'heure de fin une seule fois
+if(!sessionStorage.getItem("heureFin")){
+    sessionStorage.setItem("heureFin", Date.now() + duree * 1000);
+}
 
 const timer = document.getElementById("timer");
 
 const chrono = setInterval(function(){
+
+    const heureFin = Number(sessionStorage.getItem("heureFin"));
+
+    let temps = Math.ceil((heureFin - Date.now()) / 1000);
 
     let minutes = Math.floor(temps / 60);
     let secondes = temps % 60;
@@ -117,8 +142,6 @@ const chrono = setInterval(function(){
 
     timer.innerHTML = minutes + ":" + secondes;
 
-
-    // Alerte dernière minute
     if(temps <= 60){
 
         timer.style.background = "red";
@@ -126,14 +149,13 @@ const chrono = setInterval(function(){
 
     }
 
-
-    temps--;
-
-
-    // Fin automatique du quiz
-    if(temps < 0){
+    // Fin automatique
+    if(temps <= 0){
 
         clearInterval(chrono);
+
+        // AJOUT
+        sessionStorage.setItem("quizTermine","true");
 
         localStorage.setItem("score", score);
 
@@ -142,6 +164,5 @@ const chrono = setInterval(function(){
         window.location.href="resultat.html";
 
     }
-
 
 },1000);
