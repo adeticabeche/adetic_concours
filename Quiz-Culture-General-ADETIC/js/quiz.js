@@ -8,6 +8,7 @@ const URL_GOOGLE_SCRIPT =
 
 
 // Vérifier si le quiz est déjà terminé
+
 if (sessionStorage.getItem("quizTermine") === "true") {
 
     window.location.href = "resultat.html";
@@ -15,8 +16,11 @@ if (sessionStorage.getItem("quizTermine") === "true") {
 }
 
 
+
 // Empêcher le retour après la fin
+
 window.addEventListener("pageshow", function(event){
+
 
     if(event.persisted || sessionStorage.getItem("quizTermine") === "true"){
 
@@ -24,16 +28,22 @@ window.addEventListener("pageshow", function(event){
 
     }
 
+
 });
 
 
 
+
 // Mélange des questions
+
 const quiz = [...questions].sort(() => Math.random() - 0.5);
 
 
+
 // Garder seulement 20 questions
+
 const listeQuestions = quiz.slice(0,20);
+
 
 
 
@@ -44,12 +54,16 @@ let score = 0;
 let reponseChoisie = null;
 
 
+
 // Stockage des réponses
+
 let toutesLesReponses = [];
 
 
 
+
 // Récupération HTML
+
 const question = document.getElementById("question");
 
 const reponses = document.getElementById("reponses");
@@ -57,6 +71,7 @@ const reponses = document.getElementById("reponses");
 const numeroQuestion = document.getElementById("numeroQuestion");
 
 const progressBar = document.getElementById("progressBar");
+
 
 
 
@@ -72,30 +87,39 @@ function afficherQuestion(){
     reponseChoisie = null;
 
 
+
     const q = listeQuestions[indexQuestion];
+
 
 
     numeroQuestion.innerHTML =
     "Question " + (indexQuestion + 1) + " /20";
 
 
+
     question.innerHTML = q.question;
+
 
 
     reponses.innerHTML = "";
 
 
 
+
     q.options.forEach((texte,index)=>{
+
 
 
         const div = document.createElement("div");
 
 
+
         div.className="option";
 
 
+
         div.innerHTML = texte;
+
 
 
 
@@ -105,11 +129,14 @@ function afficherQuestion(){
 
             document.querySelectorAll(".option").forEach(op=>{
 
+
                 op.style.background="white";
 
                 op.style.color="black";
 
+
             });
+
 
 
 
@@ -131,11 +158,13 @@ function afficherQuestion(){
 
 
 
+
         reponses.appendChild(div);
 
 
 
     });
+
 
 
 
@@ -153,34 +182,45 @@ afficherQuestion();
 
 
 
+
 // ==============================
 // BOUTON SUIVANT
 // ==============================
 
 
-document.getElementById("suivant").addEventListener("click",function(){
+document.getElementById("suivant")
+.addEventListener("click",function(){
 
 
 
     if(reponseChoisie===null){
 
+
         alert("Veuillez sélectionner une réponse.");
+
 
         return;
 
+
     }
+
 
 
 
     if(reponseChoisie === listeQuestions[indexQuestion].answer){
 
+
         score++;
+
 
     }
 
 
 
+
+
     indexQuestion++;
+
 
 
 
@@ -189,7 +229,10 @@ document.getElementById("suivant").addEventListener("click",function(){
 
 
 
+
+
     if(indexQuestion < 20){
+
 
 
         afficherQuestion();
@@ -208,13 +251,7 @@ document.getElementById("suivant").addEventListener("click",function(){
 
 
 
-});
-
-
-
-
-
-// ==============================
+});// ==============================
 // FIN DU QUIZ
 // ==============================
 
@@ -222,13 +259,72 @@ document.getElementById("suivant").addEventListener("click",function(){
 function terminerQuiz(){
 
 
+    sessionStorage.setItem(
+        "quizTermine",
+        "true"
+    );
 
-    sessionStorage.setItem("quizTermine","true");
 
 
-    localStorage.setItem("score",score);
+    // Enregistrer le score
+
+    localStorage.setItem(
+        "score",
+        score
+    );
 
 
+
+
+    // Récupérer les informations du candidat
+
+    let candidat =
+    JSON.parse(localStorage.getItem("candidat"));
+
+
+
+
+
+    // Sauvegarder pour resultat.html
+
+    if(candidat){
+
+
+
+        localStorage.setItem(
+            "nom",
+            candidat.nom || ""
+        );
+
+
+
+        localStorage.setItem(
+            "prenom",
+            candidat.prenom || ""
+        );
+
+
+
+        localStorage.setItem(
+            "sexe",
+            candidat.sexe || ""
+        );
+
+
+
+        localStorage.setItem(
+            "telephone",
+            candidat.telephone || ""
+        );
+
+
+    }
+
+
+
+
+
+    // Envoi vers Google Sheet
 
     envoyerResultat()
 
@@ -243,7 +339,10 @@ function terminerQuiz(){
     .catch(error=>{
 
 
-        console.error(error);
+        console.error(
+            "Erreur envoi résultat :",
+            error
+        );
 
 
         window.location.href="resultat.html";
@@ -254,6 +353,7 @@ function terminerQuiz(){
 
 
 }
+
 
 
 
@@ -287,12 +387,12 @@ if(!sessionStorage.getItem("heureFin")){
 
 
 
-const timer=document.getElementById("timer");
+const timer = document.getElementById("timer");
 
 
 
 
-const chrono=setInterval(function(){
+const chrono = setInterval(function(){
 
 
 
@@ -302,38 +402,47 @@ const chrono=setInterval(function(){
 
 
     let temps =
-    Math.ceil((heureFin-Date.now())/1000);
+    Math.ceil((heureFin - Date.now()) / 1000);
 
 
 
 
     let minutes =
-    Math.floor(temps/60);
+    Math.floor(temps / 60);
 
 
 
     let secondes =
-    temps%60;
+    temps % 60;
 
 
 
-    if(minutes<10)
-        minutes="0"+minutes;
+
+
+    if(minutes < 10)
+
+        minutes = "0" + minutes;
 
 
 
-    if(secondes<10)
-        secondes="0"+secondes;
+
+    if(secondes < 10)
+
+        secondes = "0" + secondes;
+
+
 
 
 
     timer.innerHTML =
-    minutes+":"+secondes;
+    minutes + ":" + secondes;
 
 
 
 
-    if(temps<=60){
+
+
+    if(temps <= 60){
 
 
         timer.style.background="red";
@@ -346,7 +455,9 @@ const chrono=setInterval(function(){
 
 
 
-    if(temps<=0){
+
+
+    if(temps <= 0){
 
 
 
@@ -354,11 +465,64 @@ const chrono=setInterval(function(){
 
 
 
-        sessionStorage.setItem("quizTermine","true");
+        sessionStorage.setItem(
+            "quizTermine",
+            "true"
+        );
 
 
 
-        localStorage.setItem("score",score);
+        localStorage.setItem(
+            "score",
+            score
+        );
+
+
+
+
+
+        // Sauvegarder les informations candidat
+
+        let candidat =
+        JSON.parse(localStorage.getItem("candidat"));
+
+
+
+        if(candidat){
+
+
+
+            localStorage.setItem(
+                "nom",
+                candidat.nom || ""
+            );
+
+
+
+            localStorage.setItem(
+                "prenom",
+                candidat.prenom || ""
+            );
+
+
+
+            localStorage.setItem(
+                "sexe",
+                candidat.sexe || ""
+            );
+
+
+
+            localStorage.setItem(
+                "telephone",
+                candidat.telephone || ""
+            );
+
+
+
+        }
+
+
 
 
 
@@ -367,10 +531,14 @@ const chrono=setInterval(function(){
         .then(()=>{
 
 
-            alert("⏰ Temps écoulé ! Votre quiz est terminé.");
+            alert(
+                "⏰ Temps écoulé ! Votre quiz est terminé."
+            );
+
 
 
             window.location.href="resultat.html";
+
 
 
         })
@@ -415,6 +583,7 @@ function envoyerResultat(){
 
 
 
+
     if(!candidat){
 
 
@@ -423,7 +592,9 @@ function envoyerResultat(){
 
             nom:"Inconnu",
 
-            email:"",
+            prenom:"",
+
+            sexe:"",
 
             telephone:""
 
@@ -436,50 +607,89 @@ function envoyerResultat(){
 
 
 
+
+    const donnees = {
+
+
+
+        nom:candidat.nom,
+
+
+
+        prenom:candidat.prenom,
+
+
+
+        sexe:candidat.sexe,
+
+
+
+        telephone:candidat.telephone,
+
+
+
+        reponses:
+        toutesLesReponses
+        .filter(Boolean)
+        .join(" | "),
+
+
+
+        score:score
+
+
+
+    };
+
+
+
+
+
+
+    console.log(
+        "Données envoyées :",
+        donnees
+    );
+
+
+
+
+
+
+
     return fetch(URL_GOOGLE_SCRIPT,{
+
 
 
         method:"POST",
 
 
 
+
         headers:{
 
 
-            "Content-Type":"application/json"
+
+            "Content-Type":
+            "text/plain;charset=utf-8"
+
 
 
         },
 
 
 
-        body:JSON.stringify({
 
 
-
-            nom:candidat.nom,
-
-
-            email:candidat.email,
+        body:JSON.stringify(donnees)
 
 
-            telephone:candidat.telephone,
-
-
-            reponses:
-            toutesLesReponses.filter(Boolean).join(" | "),
-
-
-
-            score:score
-
-
-
-        })
 
 
 
     })
+
+
 
 
 
@@ -487,26 +697,42 @@ function envoyerResultat(){
 
 
 
+
+
     .then(data=>{
 
 
-        console.log("Résultat envoyé :",data);
+
+        console.log(
+            "Réponse Google Script :",
+            data
+        );
+
 
 
         return data;
+
 
 
     })
 
 
 
+
+
     .catch(error=>{
 
 
-        console.error("Erreur envoi Google Sheet :",error);
+
+        console.error(
+            "Erreur envoi Google Sheet :",
+            error
+        );
+
 
 
         throw error;
+
 
 
     });
