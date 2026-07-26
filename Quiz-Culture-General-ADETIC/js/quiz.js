@@ -1,83 +1,166 @@
+const URL_GOOGLE_SCRIPT =
+"https://script.google.com/macros/s/AKfycbwpzqWpMXdDOsvukWgA_BzZzanUK42AuevYWEHXEh7gTlCqpBfmnaLWl4uG4HNVuuPG/exec";
+
+
 // ==============================
 // QUIZ ADETIC
 // ==============================
 
-// AJOUT : Vérifier si le quiz est déjà terminé
+
+// Vérifier si le quiz est déjà terminé
 if (sessionStorage.getItem("quizTermine") === "true") {
+
     window.location.href = "resultat.html";
+
 }
 
-// AJOUT : Empêcher le retour sur le quiz après la fin
-window.addEventListener("pageshow", function (event) {
-    if (event.persisted || sessionStorage.getItem("quizTermine") === "true") {
-        window.location.href = "resultat.html";
+
+// Empêcher le retour après la fin
+window.addEventListener("pageshow", function(event){
+
+    if(event.persisted || sessionStorage.getItem("quizTermine") === "true"){
+
+        window.location.href="resultat.html";
+
     }
+
 });
 
-// Mélange les questions
+
+
+// Mélange des questions
 const quiz = [...questions].sort(() => Math.random() - 0.5);
 
-// On ne garde que 20 questions
-const listeQuestions = quiz.slice(0, 20);
+
+// Garder seulement 20 questions
+const listeQuestions = quiz.slice(0,20);
+
+
 
 let indexQuestion = 0;
+
 let score = 0;
+
 let reponseChoisie = null;
 
-// Récupération des éléments HTML
+
+// Stockage des réponses
+let toutesLesReponses = [];
+
+
+
+// Récupération HTML
 const question = document.getElementById("question");
+
 const reponses = document.getElementById("reponses");
+
 const numeroQuestion = document.getElementById("numeroQuestion");
+
 const progressBar = document.getElementById("progressBar");
+
+
+
+
+// ==============================
+// AFFICHAGE QUESTION
+// ==============================
+
 
 function afficherQuestion(){
 
+
     reponseChoisie = null;
 
+
     const q = listeQuestions[indexQuestion];
+
 
     numeroQuestion.innerHTML =
     "Question " + (indexQuestion + 1) + " /20";
 
+
     question.innerHTML = q.question;
+
 
     reponses.innerHTML = "";
 
-    q.options.forEach((texte, index)=>{
+
+
+    q.options.forEach((texte,index)=>{
+
 
         const div = document.createElement("div");
 
-        div.className = "option";
+
+        div.className="option";
+
 
         div.innerHTML = texte;
 
-        div.onclick = function(){
+
+
+        div.onclick=function(){
+
+
 
             document.querySelectorAll(".option").forEach(op=>{
 
                 op.style.background="white";
+
                 op.style.color="black";
 
             });
 
+
+
             div.style.background="#0056b3";
+
             div.style.color="white";
+
+
 
             reponseChoisie=index;
 
-        }
+
+
+            toutesLesReponses[indexQuestion]=texte;
+
+
+
+        };
+
+
 
         reponses.appendChild(div);
 
+
+
     });
 
-    progressBar.style.width=((indexQuestion)/20)*100+"%";
+
+
+    progressBar.style.width =
+    ((indexQuestion)/20)*100+"%";
+
 
 }
 
+
+
+
 afficherQuestion();
 
+
+
+
+// ==============================
+// BOUTON SUIVANT
+// ==============================
+
+
 document.getElementById("suivant").addEventListener("click",function(){
+
+
 
     if(reponseChoisie===null){
 
@@ -87,82 +170,347 @@ document.getElementById("suivant").addEventListener("click",function(){
 
     }
 
-    if(reponseChoisie===listeQuestions[indexQuestion].answer){
+
+
+    if(reponseChoisie === listeQuestions[indexQuestion].answer){
 
         score++;
 
     }
 
+
+
     indexQuestion++;
 
-    progressBar.style.width=(indexQuestion/20)*100+"%";
 
-    if(indexQuestion<20){
+
+    progressBar.style.width =
+    (indexQuestion/20)*100+"%";
+
+
+
+    if(indexQuestion < 20){
+
 
         afficherQuestion();
 
+
+
     }else{
 
-        // AJOUT
-        sessionStorage.setItem("quizTermine","true");
 
-        localStorage.setItem("score",score);
 
-        window.location.href="resultat.html";
+        terminerQuiz();
+
+
 
     }
+
+
 
 });
 
-// =======================
-// CHRONOMETRE
-// =======================
 
-// AJOUT : durée réelle du quiz
-const duree = 3 * 60;
 
-// AJOUT : mémoriser l'heure de fin une seule fois
-if(!sessionStorage.getItem("heureFin")){
-    sessionStorage.setItem("heureFin", Date.now() + duree * 1000);
-}
 
-const timer = document.getElementById("timer");
 
-const chrono = setInterval(function(){
+// ==============================
+// FIN DU QUIZ
+// ==============================
 
-    const heureFin = Number(sessionStorage.getItem("heureFin"));
 
-    let temps = Math.ceil((heureFin - Date.now()) / 1000);
+function terminerQuiz(){
 
-    let minutes = Math.floor(temps / 60);
-    let secondes = temps % 60;
 
-    if(minutes < 10) minutes = "0" + minutes;
-    if(secondes < 10) secondes = "0" + secondes;
 
-    timer.innerHTML = minutes + ":" + secondes;
+    sessionStorage.setItem("quizTermine","true");
 
-    if(temps <= 60){
 
-        timer.style.background = "red";
-        timer.style.animation = "clignoter 1s infinite";
+    localStorage.setItem("score",score);
 
-    }
 
-    // Fin automatique
-    if(temps <= 0){
 
-        clearInterval(chrono);
+    envoyerResultat()
 
-        // AJOUT
-        sessionStorage.setItem("quizTermine","true");
+    .then(()=>{
 
-        localStorage.setItem("score", score);
-
-        alert("⏰ Temps écoulé ! Votre quiz est terminé.");
 
         window.location.href="resultat.html";
 
+
+    })
+
+    .catch(error=>{
+
+
+        console.error(error);
+
+
+        window.location.href="resultat.html";
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
+// ==============================
+// CHRONOMETRE
+// ==============================
+
+
+const duree = 3 * 60;
+
+
+
+if(!sessionStorage.getItem("heureFin")){
+
+
+    sessionStorage.setItem(
+
+        "heureFin",
+
+        Date.now() + duree * 1000
+
+    );
+
+
+}
+
+
+
+
+const timer=document.getElementById("timer");
+
+
+
+
+const chrono=setInterval(function(){
+
+
+
+    const heureFin =
+    Number(sessionStorage.getItem("heureFin"));
+
+
+
+    let temps =
+    Math.ceil((heureFin-Date.now())/1000);
+
+
+
+
+    let minutes =
+    Math.floor(temps/60);
+
+
+
+    let secondes =
+    temps%60;
+
+
+
+    if(minutes<10)
+        minutes="0"+minutes;
+
+
+
+    if(secondes<10)
+        secondes="0"+secondes;
+
+
+
+    timer.innerHTML =
+    minutes+":"+secondes;
+
+
+
+
+    if(temps<=60){
+
+
+        timer.style.background="red";
+
+        timer.style.animation="clignoter 1s infinite";
+
+
     }
 
+
+
+
+    if(temps<=0){
+
+
+
+        clearInterval(chrono);
+
+
+
+        sessionStorage.setItem("quizTermine","true");
+
+
+
+        localStorage.setItem("score",score);
+
+
+
+        envoyerResultat()
+
+        .then(()=>{
+
+
+            alert("⏰ Temps écoulé ! Votre quiz est terminé.");
+
+
+            window.location.href="resultat.html";
+
+
+        })
+
+        .catch(error=>{
+
+
+            console.error(error);
+
+
+            window.location.href="resultat.html";
+
+
+        });
+
+
+
+    }
+
+
+
 },1000);
+
+
+
+
+
+
+
+
+// ==============================
+// ENVOI GOOGLE SHEET
+// ==============================
+
+
+function envoyerResultat(){
+
+
+
+    let candidat =
+    JSON.parse(localStorage.getItem("candidat"));
+
+
+
+    if(!candidat){
+
+
+        candidat={
+
+
+            nom:"Inconnu",
+
+            email:"",
+
+            telephone:""
+
+
+        };
+
+
+    }
+
+
+
+
+    return fetch(URL_GOOGLE_SCRIPT,{
+
+
+        method:"POST",
+
+
+
+        headers:{
+
+
+            "Content-Type":"application/json"
+
+
+        },
+
+
+
+        body:JSON.stringify({
+
+
+
+            nom:candidat.nom,
+
+
+            email:candidat.email,
+
+
+            telephone:candidat.telephone,
+
+
+            reponses:
+            toutesLesReponses.filter(Boolean).join(" | "),
+
+
+
+            score:score
+
+
+
+        })
+
+
+
+    })
+
+
+
+    .then(response=>response.text())
+
+
+
+    .then(data=>{
+
+
+        console.log("Résultat envoyé :",data);
+
+
+        return data;
+
+
+    })
+
+
+
+    .catch(error=>{
+
+
+        console.error("Erreur envoi Google Sheet :",error);
+
+
+        throw error;
+
+
+    });
+
+
+
+}
