@@ -326,6 +326,87 @@ Je certifie que les informations fournies sont exactes et j'accepte le règlemen
 </form>
 
 </section>
+<script>
+
+document.getElementById("formConcours")
+.addEventListener("submit", function(e){
+
+
+    e.preventDefault();
+
+
+    // Récupérer les informations du candidat
+
+    let candidat = {
+
+        nom: document.getElementById("nom").value,
+
+        email: document.getElementById("email").value,
+
+        telephone: document.getElementById("telephone").value
+
+    };
+
+
+    // Nettoyer l'ancien concours
+
+    sessionStorage.removeItem("quizTermine");
+
+    sessionStorage.removeItem("heureFin");
+
+
+    // Vérifier si le candidat a déjà participé
+
+    fetch(
+    URL_GOOGLE_SCRIPT +
+    "?email=" + candidat.email +
+    "&telephone=" + candidat.telephone
+    )
+
+
+    .then(response=>response.text())
+
+
+    .then(result=>{
+
+
+        if(result.trim()=="EXISTE"){
+
+            alert("❌ Vous avez déjà participé au concours.");
+
+            return;
+
+        }
+
+
+        // Enregistrer le candidat seulement s'il est nouveau
+
+        localStorage.setItem(
+        "candidat",
+        JSON.stringify(candidat)
+        );
+
+
+        // Aller au quiz
+
+        window.location.href="quiz.html";
+
+
+    })
+
+
+    .catch(error=>{
+
+        console.error("Erreur :", error);
+
+        alert("Une erreur est survenue. Veuillez réessayer.");
+
+    });
+
+
+});
+</script>
+
 
 <footer>
 <footer class="footer">
@@ -360,16 +441,82 @@ document.getElementById("inscription").addEventListener("submit",function(e){
 
 e.preventDefault();
 
-localStorage.setItem("nom",document.getElementById("nom").value);
-localStorage.setItem("prenom",document.getElementById("prenom").value);
-localStorage.setItem("sexe",document.getElementById("sexe").value);
-localStorage.setItem("telephone",document.getElementById("telephone").value);
+
+// Récupérer les informations du candidat
+
+let candidat = {
+
+    nom: document.getElementById("nom").value,
+
+    prenom: document.getElementById("prenom").value,
+
+    sexe: document.getElementById("sexe").value,
+
+    telephone: document.getElementById("telephone").value
+
+};
+
+
+// Nettoyer une ancienne tentative
+
+sessionStorage.removeItem("quizTermine");
+sessionStorage.removeItem("heureFin");
+
+
+// Vérifier si le candidat existe déjà
+
+fetch(
+"https://script.google.com/macros/s/AKfycbwpzqWpMXdDOsvukWgA_BzZzanUK42AuevYWEHXEh7gTlCqpBfmnaLWl4uG4HNVuuPG/exec"
++
+"?telephone=" + candidat.telephone
+)
+
+
+.then(response=>response.text())
+
+
+.then(result=>{
+
+
+if(result.trim()=="EXISTE"){
+
+
+alert("❌ Vous avez déjà participé au concours.");
+
+
+return;
+
+
+}
+
+
+// Enregistrer le candidat
+
+localStorage.setItem(
+"candidat",
+JSON.stringify(candidat)
+);
+
+
+// Aller au quiz
 
 window.location.href="quiz.html";
+
+
+})
+
+
+.catch(error=>{
+
+console.error(error);
+
+alert("Erreur de connexion. Veuillez réessayer.");
+
+});
+
 
 });
 
 </script>
-
 </body>
 </html>
