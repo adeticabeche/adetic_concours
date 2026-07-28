@@ -327,16 +327,21 @@ Je certifie que les informations fournies sont exactes et j'accepte le règlemen
 </section>
 <script>
 
+document.getElementById("inscription").addEventListener("submit",function(e){
 
-document.getElementById("formConcours")
-.addEventListener("submit", function(e){
-
-
-    e.preventDefault();
+e.preventDefault();
 
 
+// Confirmation avant de commencer le concours
+const confirmation = confirm(
+"⚠️ AVERTISSEMENT\n\n" +
+"Une seule participation est autorisée. Toute modification du nom, prénom, sexe, téléphone ou autres informations pour repasser le concours est considérée comme une fraude et entraînera la disqualification.\n\n" +
+"Acceptez-vous les règles du concours ?"
+);
 
-
+if (!confirmation) {
+    return;
+}
     // Récupérer les informations du candidat
 
     let candidat = {
