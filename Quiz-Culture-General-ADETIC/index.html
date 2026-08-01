@@ -229,6 +229,32 @@ button:hover{
     opacity:0.9;
 }
 
+.menu-header{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+.btn-header{
+    display:inline-block;
+    background:#0056b3;
+    color:#fff;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn-header:hover{
+    background:#003f87;
+    transform:translateY(-2px);
+}
+
+
 </style>
 
 </head>
@@ -237,15 +263,34 @@ button:hover{
 
 <header>
 
-<img src="images/adeticlogo.webp" alt="ADETIC">
+    <img src="images/adeticlogo.webp" alt="ADETIC">
 
-<h1>ADETIC_ABECHE</h1>
+    <h1>ADETIC_ABECHE</h1>
 
-<h2>Agence de Développement des Technologies de l'Information et de la Communication (ADETIC)</h2>
+    <h2>
+        Agence de Développement des Technologies de l'Information
+        et de la Communication (ADETIC)
+    </h2>
 
-<p><strong>CONCOURS DE SÉLECTION DES CANDIDATS</strong></p>
+    <p><strong>CONCOURS DE SÉLECTION DES CANDIDATS</strong></p>
 
-<p>Formation Gratuite en Intelligence Artificielle et en Informatique</p>
+    <p>Formation Gratuite en Intelligence Artificielle et en Informatique</p>
+
+    <div class="menu-header">
+
+        <a href="index.html" class="btn-header">
+            🏠 Accueil
+        </a>
+
+        <a href="#inscription" class="btn-header">
+            📝 Participer au concours
+        </a>
+
+        <a href="recherche.html" class="btn-header">
+            🔎 Consulter les résultats
+        </a>
+
+    </div>
 
 </header>
 
@@ -270,6 +315,7 @@ Les candidats ayant obtenu une note <strong>supérieure ou égale à 12/20</stro
 
 ⚠️ <strong>Une seule participation est autorisée.</strong> Toute tentative de repasser le concours en modifiant le nom, les prénoms, le sexe, le numéro de téléphone ou toute autre information personnelle sera considérée comme une <strong>fraude</strong> et entraînera la <strong>disqualification</strong>.
 </p>
+
 </div>
 
 </section>
@@ -326,6 +372,7 @@ Je certifie que les informations fournies sont exactes et j'accepte le règlemen
 
 </section>
 <script>
+
 
 document.getElementById("inscription").addEventListener("submit",function(e){
 
