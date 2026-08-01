@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Résultats de la sélection - ADETIC</title>
+
+<link rel="icon" href="images/adeticlogo.webp">
+
+<link rel="stylesheet" href="css/style.css">
+
+
+<style>
+
+/* ==========================
+   STYLE GENERAL
+========================== */
+
+body{
+
+    font-family:Arial, sans-serif;
+    background:#f4f7fb;
+    margin:0;
+
+}
+
+
+/* ==========================
+   HEADER ADETIC
+========================== */
+
+
+.header{
+
+    background:linear-gradient(135deg,#0d47a1,#1565c0);
+    color:white;
+    text-align:center;
+    padding:30px 15px;
+    border-bottom:5px solid #ffc107;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+
+    animation:apparition 0.8s ease-in-out;
+
+}
+
+
+
+@keyframes apparition{
+
+    from{
+
+        opacity:0;
+        transform:translateY(-20px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+
+.logo-header{
+
+    width:130px;
+    height:130px;
+    object-fit:contain;
+    background:white;
+    padding:10px;
+    border-radius:50%;
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    transition:0.4s;
+
+}
+
+
+
+.logo-header:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+
+
+.header-text h1{
+
+    margin:5px 0;
+    font-size:32px;
+    font-weight:bold;
+
+}
+
+
+
+.header-text h2{
+
+    font-size:18px;
+    font-weight:normal;
+    max-width:800px;
+    margin:10px auto;
+    line-height:1.5;
+
+}
+
+
+
+.header-text p{
+
+    font-size:16px;
+    margin-top:15px;
+
+}
+
+
+
+
+/* MENU */
+
+.menu-header{
+
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+
+}
+
+
+
+
+.btn-header{
+
+    background:white;
+    color:#0d47a1;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+
+}
+
+
+
+.btn-header:hover,
+.btn-header.active{
+
+    background:#ffc107;
+    color:#0d47a1;
+    transform:translateY(-3px);
+
+}
+
+
+
+
+
+/* ==========================
+   ZONE RECHERCHE
+========================== */
+
+
+.container{
+
+    max-width:600px;
+    width:90%;
+    margin:50px auto;
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+    text-align:center;
+
+}
+
+
+
+.container h2{
+
+    color:#0d47a1;
+
+}
+
+
+
+.ligne{
+
+    width:80px;
+    height:4px;
+    background:#ffc107;
+    margin:10px auto 20px;
+    border-radius:10px;
+
+}
+
+
+
+.container p{
+
+    color:#555;
+    line-height:1.6;
+
+}
+
+
+
+/* FORMULAIRE */
+
+
+form input{
+
+    width:90%;
+    padding:14px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+    box-sizing:border-box;
+
+}
+
+
+
+form input:focus{
+
+    border-color:#1565c0;
+    outline:none;
+
+}
+
+
+
+
+
+form button{
+
+    width:95%;
+    padding:14px;
+    margin-top:15px;
+    background:linear-gradient(135deg,#1565c0,#0d47a1);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+
+}
+
+
+
+form button:hover{
+
+    transform:scale(1.03);
+
+}
+
+
+
+
+
+.note{
+
+    font-size:13px;
+    color:#777;
+    margin-top:20px;
+
+}
+
+
+
+
+#resultat{
+
+    margin-top:25px;
+    padding:15px;
+    border-radius:10px;
+    font-weight:bold;
+
+}
+
+
+
+
+/* ==========================
+   FOOTER
+========================== */
+
+
+.footer{
+
+    margin-top:50px;
+    background:linear-gradient(135deg,#0d47a1,#1565c0);
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    border-top:4px solid #ffc107;
+    box-shadow:0 -2px 10px rgba(0,0,0,0.15);
+
+}
+
+
+
+.footer-content h3{
+
+    margin-bottom:12px;
+    font-size:20px;
+
+}
+
+
+
+.footer-content p{
+
+    margin:8px 0;
+    font-size:15px;
+    line-height:1.6;
+
+}
+
+
+
+.footer-content a{
+
+    color:#ffd54f;
+    text-decoration:none;
+    font-weight:bold;
+
+}
+
+
+
+.copyright{
+
+    margin-top:15px;
+    font-size:13px;
+    opacity:0.9;
+
+}
+
+
+
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+
+@media(max-width:600px){
+
+
+.logo-header{
+
+    width:90px;
+    height:90px;
+
+}
+
+
+
+.header-text h1{
+
+    font-size:25px;
+
+}
+
+
+
+.header-text h2{
+
+    font-size:15px;
+
+}
+
+
+
+.container{
+
+    margin:20px auto;
+    padding:25px;
+
+}
+
+
+
+.btn-header{
+
+    width:85%;
+    display:block;
+    margin:10px auto;
+
+}
+
+
+
+}
+
+/* CARTE RESULTAT */
+
+.carte-resultat{
+
+    margin-top:25px;
+    padding:25px;
+    background:#f8faff;
+    border-left:5px solid #1565c0;
+    border-radius:12px;
+    text-align:left;
+    animation:apparition 0.5s ease;
+
+}
+
+
+
+.carte-resultat h3{
+
+    text-align:center;
+    color:#0d47a1;
+
+}
+
+
+
+.statut{
+
+    margin-top:20px;
+    padding:12px;
+    text-align:center;
+    border-radius:8px;
+    font-weight:bold;
+
+}
+
+
+
+.admis{
+
+    background:#d4edda;
+    color:#155724;
+
+}
+
+
+
+.non-admis{
+
+    background:#f8d7da;
+    color:#721c24;
+
+}
+
+
+
+.message{
+
+    padding:15px;
+    border-radius:10px;
+    margin-top:20px;
+    font-weight:bold;
+    text-align:center;
+
+}
+
+
+
+.attente{
+
+    background:#fff3cd;
+    color:#856404;
+
+}
+
+
+
+.erreur{
+
+    background:#f8d7da;
+    color:#721c24;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<header class="header">
+
+
+<img src="images/adeticlogo.webp"
+alt="ADETIC"
+class="logo-header">
+
+
+
+<div class="header-text">
+
+
+<h1>ADETIC_ABECHE</h1>
+
+
+<h2>
+Agence de Développement des Technologies de l'Information
+et de la Communication (ADETIC)
+</h2>
+
+
+<p>
+Formation Gratuite en Intelligence Artificielle
+et en Informatique
+</p>
+
+
+</div>
+
+
+
+<div class="menu-header">
+
+
+<a href="index.html" class="btn-header">
+🏠 Accueil
+</a>
+
+
+<a href="index.html#inscription" class="btn-header">
+📝 Participer au concours
+</a>
+
+
+<a href="recherche.html" class="btn-header active">
+🔎 Consulter les résultats
+</a>
+
+
+</div>
+
+
+</header>
+
+
+
+
+<main>
+
+
+<div class="container">
+
+
+<h2>
+🔎 Consultation des résultats
+</h2>
+
+
+<div class="ligne"></div>
+
+
+
+<p>
+Saisissez exactement les informations utilisées lors de votre inscription.
+</p>
+
+
+
+<form id="formRecherche">
+
+
+
+<input
+type="text"
+id="nom"
+placeholder="👤 Nom"
+required>
+
+
+
+<input
+type="text"
+id="prenom"
+placeholder="👤 Prénom"
+required>
+
+
+
+<input
+type="text"
+id="telephone"
+placeholder="📞 Téléphone"
+required>
+
+
+
+<button type="submit">
+
+🔎 Vérifier mon résultat
+
+</button>
+
+
+
+</form>
+
+
+
+<p class="note">
+
+🔒 Vos informations sont utilisées uniquement pour vérifier votre résultat.
+
+</p>
+
+
+
+<div id="resultat"></div>
+
+
+
+</div>
+
+
+</main>
+
+
+
+
+<script src="js/recherche.js"></script>
+
+
+
+
+<footer class="footer">
+
+
+<div class="footer-content">
+
+
+<h3>
+Plateforme d'Évaluation en Ligne - ADETIC Abéché
+</h3>
+
+
+<p>
+Conçue et développée par
+<strong>OUSMAN ADAM MAHAMAT</strong>
+</p>
+
+
+<p>
+Formateur Principal & Responsable Informatique
+</p>
+
+
+<p>
+📧 Email :
+<a href="mailto:ousmanadammahamatahmat@gmail.com">
+ousmanadammahamatahmat@gmail.com
+</a>
+</p>
+
+
+<p class="copyright">
+
+© 2026 ADETIC Abéché - Tous droits réservés
+
+</p>
+
+
+</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
