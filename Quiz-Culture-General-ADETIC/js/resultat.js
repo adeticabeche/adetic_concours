@@ -75,8 +75,7 @@ if(score >= 12){
     actions.innerHTML = `
         <div style="margin-top:20px;padding:15px;background:#fff3cd;border-left:5px solid #ffc107;border-radius:8px;">
             <p>
-                <strong>Vous n'avez pas atteint le seuil de présélection (12/20).</strong><br><br>
-                Vous pouvez toutefois vous inscrire à la formation complète en payant les frais de participation fixés par l'ADETIC.
+                 Vous pouvez toutefois vous inscrire à la formation complète en payant les frais de participation fixés par l'ADETIC.
             </p>
         </div>
 
