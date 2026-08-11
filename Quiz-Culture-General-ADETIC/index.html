@@ -263,12 +263,10 @@ button:hover{
 
 <!-- =========================================================
      ADETIC - ASSISTANT VIRTUEL BOTPRESS
+     BOUTON DEPLAÇABLE
      ========================================================= -->
 
-<!-- =========================================================
-     BOTPRESS WEBCHAT
-     ========================================================= -->
-
+<!-- BOTPRESS -->
 <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
 
 <script
@@ -277,21 +275,17 @@ button:hover{
 </script>
 
 
-<!-- =========================================================
-     STYLE DU BOUTON ASSISTANT ADETIC
-     ========================================================= -->
-
 <style>
 
-  /* ---------------------------------------------------------
-     Bouton principal
-     --------------------------------------------------------- */
+  /* ========================================================
+     BOUTON ADETIC
+     ======================================================== */
 
   #adetic-assistant-button {
 
     position: fixed;
 
-    right: 22px;
+    left: 22px;
     bottom: 22px;
 
     width: 68px;
@@ -299,13 +293,13 @@ button:hover{
 
     padding: 5px;
 
-    background: #ffffff;
+    background: white;
 
     border: 3px solid #0066cc;
 
     border-radius: 50%;
 
-    cursor: pointer;
+    cursor: grab;
 
     z-index: 2147483647;
 
@@ -316,32 +310,37 @@ button:hover{
     justify-content: center;
 
     box-shadow:
-      0 4px 15px rgba(0, 0, 0, 0.25);
+      0 4px 15px rgba(0,0,0,0.25);
+
+    touch-action: none;
+
+    user-select: none;
 
     transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease;
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
 
+    animation: adeticPulse 3s infinite;
   }
 
 
-  /* ---------------------------------------------------------
-     Effet au passage de la souris
-     --------------------------------------------------------- */
+  /* Quand l'utilisateur déplace le bouton */
 
-  #adetic-assistant-button:hover {
+  #adetic-assistant-button.dragging {
+
+    cursor: grabbing;
 
     transform: scale(1.08);
 
+    animation: none;
+
     box-shadow:
-      0 7px 25px rgba(0, 0, 0, 0.35);
+      0 8px 25px rgba(0,102,204,0.40);
 
   }
 
 
-  /* ---------------------------------------------------------
-     Logo ADETIC
-     --------------------------------------------------------- */
+  /* Logo ADETIC */
 
   #adetic-assistant-button img {
 
@@ -353,26 +352,27 @@ button:hover{
 
     border-radius: 50%;
 
+    pointer-events: none;
+
     display: block;
 
   }
 
 
-  /* ---------------------------------------------------------
-     Message d'accueil
-     --------------------------------------------------------- */
+  /* ========================================================
+     MESSAGE D'ACCUEIL
+     ======================================================== */
 
   #adetic-assistant-message {
 
     position: fixed;
 
-    right: 102px;
-
+    left: 102px;
     bottom: 37px;
 
-    background: #ffffff;
+    background: white;
 
-    color: #333333;
+    color: #333;
 
     padding: 10px 15px;
 
@@ -385,17 +385,17 @@ button:hover{
     line-height: 1.4;
 
     box-shadow:
-      0 3px 15px rgba(0, 0, 0, 0.18);
+      0 3px 15px rgba(0,0,0,0.18);
 
     z-index: 2147483646;
 
-    animation:
-      adeticMessageAnimation 0.5s ease;
+    transition:
+      opacity 0.4s ease;
+
+    pointer-events: none;
 
   }
 
-
-  /* Titre du message */
 
   #adetic-assistant-message strong {
 
@@ -404,74 +404,39 @@ button:hover{
   }
 
 
-  /* ---------------------------------------------------------
-     Animation du message
-     --------------------------------------------------------- */
-
-  @keyframes adeticMessageAnimation {
-
-    from {
-
-      opacity: 0;
-
-      transform:
-        translateY(10px);
-
-    }
-
-    to {
-
-      opacity: 1;
-
-      transform:
-        translateY(0);
-
-    }
-
-  }
-
-
-  /* ---------------------------------------------------------
-     Animation du bouton
-     --------------------------------------------------------- */
+  /* ========================================================
+     ANIMATION
+     ======================================================== */
 
   @keyframes adeticPulse {
 
     0% {
 
       box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.25);
+        0 4px 15px rgba(0,0,0,0.25);
 
     }
 
     50% {
 
       box-shadow:
-        0 4px 25px rgba(0, 102, 204, 0.45);
+        0 4px 25px rgba(0,102,204,0.45);
 
     }
 
     100% {
 
       box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.25);
+        0 4px 15px rgba(0,0,0,0.25);
 
     }
 
   }
 
 
-  #adetic-assistant-button {
-
-    animation:
-      adeticPulse 3s infinite;
-
-  }
-
-
-  /* ---------------------------------------------------------
-     Version téléphone
-     --------------------------------------------------------- */
+  /* ========================================================
+     MOBILE
+     ======================================================== */
 
   @media (max-width: 600px) {
 
@@ -481,24 +446,14 @@ button:hover{
 
       height: 58px;
 
-      right: 15px;
-
-      bottom: 15px;
-
-      padding: 4px;
-
     }
 
 
     #adetic-assistant-message {
 
-      right: 82px;
-
-      bottom: 25px;
+      font-size: 12px;
 
       max-width: 190px;
-
-      font-size: 12px;
 
     }
 
@@ -508,13 +463,12 @@ button:hover{
 
 
 <!-- =========================================================
-     MESSAGE D'ACCUEIL
+     MESSAGE
      ========================================================= -->
 
 <div id="adetic-assistant-message">
 
   <strong>Assistant ADETIC</strong>
-
   <br>
 
   Besoin d'aide pour le concours ?
@@ -523,11 +477,7 @@ button:hover{
 
 
 <!-- =========================================================
-     BOUTON AVEC LE LOGO ADETIC
-     
-     Le logo se trouve dans :
-     
-     images/adeticlogo.webp
+     BOUTON AVEC LOGO ADETIC
      ========================================================= -->
 
 <button
@@ -542,10 +492,6 @@ button:hover{
 </button>
 
 
-<!-- =========================================================
-     SCRIPT DE GESTION DU CHATBOT
-     ========================================================= -->
-
 <script>
 
 (function () {
@@ -553,9 +499,9 @@ button:hover{
   "use strict";
 
 
-  /* ---------------------------------------------------------
-     Récupération des éléments
-     --------------------------------------------------------- */
+  /* ========================================================
+     ELEMENTS
+     ======================================================== */
 
   const button =
     document.getElementById(
@@ -569,14 +515,10 @@ button:hover{
     );
 
 
-  /* ---------------------------------------------------------
-     Vérification du bouton
-     --------------------------------------------------------- */
-
   if (!button) {
 
     console.error(
-      "Erreur : bouton Assistant ADETIC introuvable."
+      "Bouton Assistant ADETIC introuvable."
     );
 
     return;
@@ -584,158 +526,471 @@ button:hover{
   }
 
 
-  /* ---------------------------------------------------------
-     Fonction pour ouvrir Botpress
-     --------------------------------------------------------- */
+  /* ========================================================
+     POSITION MEMORISEE
+     ======================================================== */
 
-  function ouvrirBotpress() {
+  const savedPosition =
+    localStorage.getItem(
+      "adeticAssistantPosition"
+    );
 
-    /*
-     * Vérifie si Botpress est disponible
-     */
 
-    if (
-      window.botpress &&
-      typeof window.botpress.open === "function"
-    ) {
+  if (savedPosition) {
 
-      window.botpress.open();
+    try {
 
-      /*
-       * Masquer le message
-       */
+      const position =
+        JSON.parse(savedPosition);
 
-      if (message) {
 
-        message.style.display = "none";
+      if (
+        typeof position.left === "number" &&
+        typeof position.top === "number"
+      ) {
+
+        button.style.left =
+          position.left + "px";
+
+        button.style.top =
+          position.top + "px";
+
+        button.style.right =
+          "auto";
+
+        button.style.bottom =
+          "auto";
 
       }
 
-      return true;
+    } catch (error) {
+
+      console.log(
+        "Position précédente invalide."
+      );
 
     }
-
-
-    return false;
 
   }
 
 
-  /* ---------------------------------------------------------
-     Clic sur le logo ADETIC
-     --------------------------------------------------------- */
+  /* ========================================================
+     VARIABLES DE DEPLACEMENT
+     ======================================================== */
+
+  let isDragging = false;
+
+  let moved = false;
+
+  let startX = 0;
+
+  let startY = 0;
+
+  let initialLeft = 0;
+
+  let initialTop = 0;
+
+
+  /* ========================================================
+     DEBUT DU DEPLACEMENT
+     ======================================================== */
+
+  function commencerDeplacement(event) {
+
+    event.preventDefault();
+
+
+    isDragging = true;
+
+    moved = false;
+
+
+    const rect =
+      button.getBoundingClientRect();
+
+
+    initialLeft =
+      rect.left;
+
+    initialTop =
+      rect.top;
+
+
+    startX =
+      event.clientX;
+
+    startY =
+      event.clientY;
+
+
+    button.classList.add(
+      "dragging"
+    );
+
+
+    /*
+     * Empêche le navigateur de sélectionner
+     * du texte pendant le déplacement.
+     */
+
+    document.body.style.userSelect =
+      "none";
+
+  }
+
+
+  /* ========================================================
+     DEPLACEMENT
+     ======================================================== */
+
+  function deplacer(event) {
+
+    if (!isDragging) {
+
+      return;
+
+    }
+
+
+    const deltaX =
+      event.clientX - startX;
+
+    const deltaY =
+      event.clientY - startY;
+
+
+    /*
+     * Considérer comme déplacement
+     * après quelques pixels.
+     */
+
+    if (
+      Math.abs(deltaX) > 5 ||
+      Math.abs(deltaY) > 5
+    ) {
+
+      moved = true;
+
+    }
+
+
+    let newLeft =
+      initialLeft + deltaX;
+
+    let newTop =
+      initialTop + deltaY;
+
+
+    /* ------------------------------------------------------
+       Limites de l'écran
+       ------------------------------------------------------ */
+
+    const buttonWidth =
+      button.offsetWidth;
+
+    const buttonHeight =
+      button.offsetHeight;
+
+
+    const maxLeft =
+      window.innerWidth -
+      buttonWidth;
+
+
+    const maxTop =
+      window.innerHeight -
+      buttonHeight;
+
+
+    if (newLeft < 0) {
+
+      newLeft = 0;
+
+    }
+
+
+    if (newTop < 0) {
+
+      newTop = 0;
+
+    }
+
+
+    if (newLeft > maxLeft) {
+
+      newLeft = maxLeft;
+
+    }
+
+
+    if (newTop > maxTop) {
+
+      newTop = maxTop;
+
+    }
+
+
+    /*
+     * Appliquer la position
+     */
+
+    button.style.left =
+      newLeft + "px";
+
+    button.style.top =
+      newTop + "px";
+
+    button.style.right =
+      "auto";
+
+    button.style.bottom =
+      "auto";
+
+  }
+
+
+  /* ========================================================
+     FIN DU DEPLACEMENT
+     ======================================================== */
+
+  function terminerDeplacement() {
+
+    if (!isDragging) {
+
+      return;
+
+    }
+
+
+    isDragging = false;
+
+
+    button.classList.remove(
+      "dragging"
+    );
+
+
+    document.body.style.userSelect =
+      "";
+
+
+    /*
+     * Sauvegarder la position
+     */
+
+    const rect =
+      button.getBoundingClientRect();
+
+
+    const position = {
+
+      left: rect.left,
+
+      top: rect.top
+
+    };
+
+
+    localStorage.setItem(
+
+      "adeticAssistantPosition",
+
+      JSON.stringify(position)
+
+    );
+
+
+    /*
+     * Si le bouton n'a pas vraiment bougé,
+     * considérer l'action comme un clic.
+     */
+
+    if (!moved) {
+
+      ouvrirBotpress();
+
+    }
+
+  }
+
+
+  /* ========================================================
+     EVENEMENTS SOURIS
+     * ======================================================== */
 
   button.addEventListener(
-    "click",
+    "pointerdown",
+    commencerDeplacement
+  );
+
+
+  document.addEventListener(
+    "pointermove",
+    deplacer
+  );
+
+
+  document.addEventListener(
+    "pointerup",
+    terminerDeplacement
+  );
+
+
+  /* ========================================================
+     OUVERTURE BOTPRESS
+     ======================================================== */
+
+  function ouvrirBotpress() {
+
+    /*
+     * Cacher le message
+     */
+
+    if (message) {
+
+      message.style.display =
+        "none";
+
+    }
+
+
+    /*
+     * Botpress est prêt
+     */
+
+    if (
+      window.botpress &&
+      typeof window.botpress.open ===
+        "function"
+    ) {
+
+      window.botpress.open();
+
+      return;
+
+    }
+
+
+    /*
+     * Si Botpress n'est pas encore prêt,
+     * attendre son chargement.
+     */
+
+    let tentatives = 0;
+
+
+    const attente =
+      setInterval(
+        function () {
+
+          tentatives++;
+
+
+          if (
+            window.botpress &&
+            typeof window.botpress.open ===
+              "function"
+          ) {
+
+            clearInterval(
+              attente
+            );
+
+
+            window.botpress.open();
+
+            return;
+
+          }
+
+
+          /*
+           * Maximum 10 secondes
+           */
+
+          if (tentatives >= 20) {
+
+            clearInterval(
+              attente
+            );
+
+
+            console.error(
+              "Botpress n'est pas disponible."
+            );
+
+          }
+
+        },
+
+        500
+
+      );
+
+  }
+
+
+  /* ========================================================
+     MESSAGE AUTOMATIQUE
+     ======================================================== */
+
+  setTimeout(
     function () {
 
-
-      /*
-       * Masquer immédiatement le message
-       */
-
-      if (message) {
-
-        message.style.display = "none";
-
-      }
-
-
-      /*
-       * Essayer immédiatement
-       */
-
-      if (ouvrirBotpress()) {
+      if (!message) {
 
         return;
 
       }
 
 
-      /*
-       * Si Botpress n'est pas encore prêt,
-       * attendre son chargement.
-       */
-
-      let tentatives = 0;
+      message.style.opacity =
+        "0";
 
 
-      const attente =
-        setInterval(
-          function () {
+      setTimeout(
+        function () {
 
-            tentatives++;
+          message.style.display =
+            "none";
 
+        },
 
-            /*
-             * Réessayer
-             */
+        500
 
-            if (ouvrirBotpress()) {
+      );
 
-              clearInterval(attente);
+    },
 
-              return;
-
-            }
-
-
-            /*
-             * Arrêter après 10 secondes
-             */
-
-            if (tentatives >= 20) {
-
-              clearInterval(attente);
-
-              console.error(
-                "Assistant ADETIC : Botpress n'est pas encore disponible."
-              );
-
-            }
-
-          },
-
-          500
-
-        );
-
-    }
+    8000
 
   );
 
 
-  /* ---------------------------------------------------------
-     Détecter l'initialisation de Botpress
-     --------------------------------------------------------- */
+  /* ========================================================
+     BOTPrESS INITIALISE
+     ======================================================== */
 
   function surveillerBotpress() {
 
     if (
       window.botpress &&
-      typeof window.botpress.on === "function"
+      typeof window.botpress.on ===
+        "function"
     ) {
 
-
-      /*
-       * Webchat initialisé
-       */
 
       window.botpress.on(
         "webchat:initialized",
         function () {
 
           console.log(
-            "Assistant ADETIC : Botpress est prêt."
+            "Assistant ADETIC : Botpress prêt."
           );
 
         }
       );
 
-
-      /*
-       * Webchat ouvert
-       */
 
       window.botpress.on(
         "webchat:opened",
@@ -745,19 +1000,9 @@ button:hover{
             "Assistant ADETIC : Webchat ouvert."
           );
 
-          if (message) {
-
-            message.style.display = "none";
-
-          }
-
         }
       );
 
-
-      /*
-       * Webchat fermé
-       */
 
       window.botpress.on(
         "webchat:closed",
@@ -776,11 +1021,6 @@ button:hover{
     }
 
 
-    /*
-     * Botpress n'est pas encore chargé.
-     * On vérifie à nouveau.
-     */
-
     setTimeout(
       surveillerBotpress,
       500
@@ -792,45 +1032,9 @@ button:hover{
   surveillerBotpress();
 
 
-  /* ---------------------------------------------------------
-     Masquer le message automatiquement après 8 secondes
-     --------------------------------------------------------- */
-
-  setTimeout(
-    function () {
-
-      if (!message) {
-
-        return;
-
-      }
-
-
-      message.style.opacity = "0";
-
-
-      setTimeout(
-        function () {
-
-          message.style.display = "none";
-
-        },
-
-        500
-
-      );
-
-    },
-
-    8000
-
-  );
-
-
 })();
 
 </script>
-    
 <header>
 
     <img src="images/adeticlogo.webp" alt="ADETIC">
