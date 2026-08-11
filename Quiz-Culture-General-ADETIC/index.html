@@ -261,6 +261,576 @@ button:hover{
 
 <body>
 
+<!-- =========================================================
+     ADETIC - ASSISTANT VIRTUEL BOTPRESS
+     ========================================================= -->
+
+<!-- =========================================================
+     BOTPRESS WEBCHAT
+     ========================================================= -->
+
+<script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+
+<script
+  src="https://files.bpcontent.cloud/2025/08/30/18/20250830184723-SWN0SE31.js"
+  defer>
+</script>
+
+
+<!-- =========================================================
+     STYLE DU BOUTON ASSISTANT ADETIC
+     ========================================================= -->
+
+<style>
+
+  /* ---------------------------------------------------------
+     Bouton principal
+     --------------------------------------------------------- */
+
+  #adetic-assistant-button {
+
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    width: 68px;
+    height: 68px;
+
+    padding: 5px;
+
+    background: #ffffff;
+
+    border: 3px solid #0066cc;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    z-index: 2147483647;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+      0 4px 15px rgba(0, 0, 0, 0.25);
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+
+  }
+
+
+  /* ---------------------------------------------------------
+     Effet au passage de la souris
+     --------------------------------------------------------- */
+
+  #adetic-assistant-button:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+      0 7px 25px rgba(0, 0, 0, 0.35);
+
+  }
+
+
+  /* ---------------------------------------------------------
+     Logo ADETIC
+     --------------------------------------------------------- */
+
+  #adetic-assistant-button img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+
+    display: block;
+
+  }
+
+
+  /* ---------------------------------------------------------
+     Message d'accueil
+     --------------------------------------------------------- */
+
+  #adetic-assistant-message {
+
+    position: fixed;
+
+    right: 102px;
+
+    bottom: 37px;
+
+    background: #ffffff;
+
+    color: #333333;
+
+    padding: 10px 15px;
+
+    border-radius: 10px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    box-shadow:
+      0 3px 15px rgba(0, 0, 0, 0.18);
+
+    z-index: 2147483646;
+
+    animation:
+      adeticMessageAnimation 0.5s ease;
+
+  }
+
+
+  /* Titre du message */
+
+  #adetic-assistant-message strong {
+
+    color: #0066cc;
+
+  }
+
+
+  /* ---------------------------------------------------------
+     Animation du message
+     --------------------------------------------------------- */
+
+  @keyframes adeticMessageAnimation {
+
+    from {
+
+      opacity: 0;
+
+      transform:
+        translateY(10px);
+
+    }
+
+    to {
+
+      opacity: 1;
+
+      transform:
+        translateY(0);
+
+    }
+
+  }
+
+
+  /* ---------------------------------------------------------
+     Animation du bouton
+     --------------------------------------------------------- */
+
+  @keyframes adeticPulse {
+
+    0% {
+
+      box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.25);
+
+    }
+
+    50% {
+
+      box-shadow:
+        0 4px 25px rgba(0, 102, 204, 0.45);
+
+    }
+
+    100% {
+
+      box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.25);
+
+    }
+
+  }
+
+
+  #adetic-assistant-button {
+
+    animation:
+      adeticPulse 3s infinite;
+
+  }
+
+
+  /* ---------------------------------------------------------
+     Version téléphone
+     --------------------------------------------------------- */
+
+  @media (max-width: 600px) {
+
+    #adetic-assistant-button {
+
+      width: 58px;
+
+      height: 58px;
+
+      right: 15px;
+
+      bottom: 15px;
+
+      padding: 4px;
+
+    }
+
+
+    #adetic-assistant-message {
+
+      right: 82px;
+
+      bottom: 25px;
+
+      max-width: 190px;
+
+      font-size: 12px;
+
+    }
+
+  }
+
+</style>
+
+
+<!-- =========================================================
+     MESSAGE D'ACCUEIL
+     ========================================================= -->
+
+<div id="adetic-assistant-message">
+
+  <strong>Assistant ADETIC</strong>
+
+  <br>
+
+  Besoin d'aide pour le concours ?
+
+</div>
+
+
+<!-- =========================================================
+     BOUTON AVEC LE LOGO ADETIC
+     
+     Le logo se trouve dans :
+     
+     images/adeticlogo.webp
+     ========================================================= -->
+
+<button
+  id="adetic-assistant-button"
+  type="button"
+  aria-label="Ouvrir l'Assistant ADETIC">
+
+  <img
+    src="images/adeticlogo.webp"
+    alt="Assistant ADETIC">
+
+</button>
+
+
+<!-- =========================================================
+     SCRIPT DE GESTION DU CHATBOT
+     ========================================================= -->
+
+<script>
+
+(function () {
+
+  "use strict";
+
+
+  /* ---------------------------------------------------------
+     Récupération des éléments
+     --------------------------------------------------------- */
+
+  const button =
+    document.getElementById(
+      "adetic-assistant-button"
+    );
+
+
+  const message =
+    document.getElementById(
+      "adetic-assistant-message"
+    );
+
+
+  /* ---------------------------------------------------------
+     Vérification du bouton
+     --------------------------------------------------------- */
+
+  if (!button) {
+
+    console.error(
+      "Erreur : bouton Assistant ADETIC introuvable."
+    );
+
+    return;
+
+  }
+
+
+  /* ---------------------------------------------------------
+     Fonction pour ouvrir Botpress
+     --------------------------------------------------------- */
+
+  function ouvrirBotpress() {
+
+    /*
+     * Vérifie si Botpress est disponible
+     */
+
+    if (
+      window.botpress &&
+      typeof window.botpress.open === "function"
+    ) {
+
+      window.botpress.open();
+
+      /*
+       * Masquer le message
+       */
+
+      if (message) {
+
+        message.style.display = "none";
+
+      }
+
+      return true;
+
+    }
+
+
+    return false;
+
+  }
+
+
+  /* ---------------------------------------------------------
+     Clic sur le logo ADETIC
+     --------------------------------------------------------- */
+
+  button.addEventListener(
+    "click",
+    function () {
+
+
+      /*
+       * Masquer immédiatement le message
+       */
+
+      if (message) {
+
+        message.style.display = "none";
+
+      }
+
+
+      /*
+       * Essayer immédiatement
+       */
+
+      if (ouvrirBotpress()) {
+
+        return;
+
+      }
+
+
+      /*
+       * Si Botpress n'est pas encore prêt,
+       * attendre son chargement.
+       */
+
+      let tentatives = 0;
+
+
+      const attente =
+        setInterval(
+          function () {
+
+            tentatives++;
+
+
+            /*
+             * Réessayer
+             */
+
+            if (ouvrirBotpress()) {
+
+              clearInterval(attente);
+
+              return;
+
+            }
+
+
+            /*
+             * Arrêter après 10 secondes
+             */
+
+            if (tentatives >= 20) {
+
+              clearInterval(attente);
+
+              console.error(
+                "Assistant ADETIC : Botpress n'est pas encore disponible."
+              );
+
+            }
+
+          },
+
+          500
+
+        );
+
+    }
+
+  );
+
+
+  /* ---------------------------------------------------------
+     Détecter l'initialisation de Botpress
+     --------------------------------------------------------- */
+
+  function surveillerBotpress() {
+
+    if (
+      window.botpress &&
+      typeof window.botpress.on === "function"
+    ) {
+
+
+      /*
+       * Webchat initialisé
+       */
+
+      window.botpress.on(
+        "webchat:initialized",
+        function () {
+
+          console.log(
+            "Assistant ADETIC : Botpress est prêt."
+          );
+
+        }
+      );
+
+
+      /*
+       * Webchat ouvert
+       */
+
+      window.botpress.on(
+        "webchat:opened",
+        function () {
+
+          console.log(
+            "Assistant ADETIC : Webchat ouvert."
+          );
+
+          if (message) {
+
+            message.style.display = "none";
+
+          }
+
+        }
+      );
+
+
+      /*
+       * Webchat fermé
+       */
+
+      window.botpress.on(
+        "webchat:closed",
+        function () {
+
+          console.log(
+            "Assistant ADETIC : Webchat fermé."
+          );
+
+        }
+      );
+
+
+      return;
+
+    }
+
+
+    /*
+     * Botpress n'est pas encore chargé.
+     * On vérifie à nouveau.
+     */
+
+    setTimeout(
+      surveillerBotpress,
+      500
+    );
+
+  }
+
+
+  surveillerBotpress();
+
+
+  /* ---------------------------------------------------------
+     Masquer le message automatiquement après 8 secondes
+     --------------------------------------------------------- */
+
+  setTimeout(
+    function () {
+
+      if (!message) {
+
+        return;
+
+      }
+
+
+      message.style.opacity = "0";
+
+
+      setTimeout(
+        function () {
+
+          message.style.display = "none";
+
+        },
+
+        500
+
+      );
+
+    },
+
+    8000
+
+  );
+
+
+})();
+
+</script>
+    
 <header>
 
     <img src="images/adeticlogo.webp" alt="ADETIC">
