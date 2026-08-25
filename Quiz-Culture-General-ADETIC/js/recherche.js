@@ -140,17 +140,13 @@ formulaire.addEventListener("submit", function(e){
 
 
 
-             <div class="success">
+           <div class="success">
 
-            🎉 <strong>Félicitations !</strong><br><br>
+    🎉 <strong>Félicitations !</strong><br><br>
 
-            Vous êtes sélectionné(e) pour la formation à
-            <strong>l'ADETIC d'Abéché</strong>.<br><br>
+    Vous êtes sélectionné(e) pour la formation à <strong>l'ADETIC d'Abéché</strong>.<br><br>
 
-            La formation a déjà démarré le <strong>24 août 2026</strong>.
-            Nous vous invitons à rejoindre <strong>l'ADETIC d'Abéché</strong>
-            immédiatement et au plus tard le <strong>30 août 2026</strong>
-            afin de participer à la formation.
+    La formation a débuté le <strong>24 août 2026</strong>. Merci de rejoindre l'ADETIC immédiatement, au plus tard le <strong>30 août 2026</strong> afin de participer à la formation.
 
             </div>
 
