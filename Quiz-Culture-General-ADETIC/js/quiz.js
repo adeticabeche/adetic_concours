@@ -366,7 +366,7 @@ function terminerQuiz(){
 // ==============================
 
 
-const duree = 3 * 60;
+const duree = 10 * 60;
 
 
 
